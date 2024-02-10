@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Left Index</title>
+    <style>
+      body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ensure full viewport height */
+}
+
+nav {
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 30px; /* Adjust the margin */
+  padding-left: 10px; /* Adjust the padding */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s; /* Add transition for smooth hover effect */
+}
+
+nav ul li a:hover {
+  background-color:grey; /* Customize the hover background color */
+}
+
+iframe {
+  width: 100%;
+  flex: 1; /* Fill the remaining vertical space */
+  border: none;
+  display: block; /* Set iframe as a block-level element */
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="attendance.html" target="content-iframe">Check Attendance</a>
+        </li>
+        <li>
+          <a href="class_timetable.html" target="content-iframe"
+            >Class Timetable</a
+          >
+        </li>
+        <li>
+          <a href="exam_timetable.html" target="content-iframe"
+            >Exam Timetable</a
+          >
+        </li>
+        <li><a href="results.html" target="content-iframe">Results</a></li>
+        <li>
+          <a href="events.html" target="content-iframe"
+            >Events & Achievements</a
+          >
+        </li>
+        <li><a href="index.html" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
+
+    <iframe name="content-iframe" src="attendance.html"></iframe>
+
+    <footer>&copy; 2023 LICET</footer>
+
+    <script>
+      function logout() {
+        document.querySelector("nav").classList.add("hidden");
+        document.querySelector("footer").classList.add("hidden");
+      }
+      const links = document.querySelectorAll("nav ul li a");
+      links.forEach((link) => {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          const target = event.target.getAttribute("href");
+          const iframe = document.getElementsByName("content-iframe")[0];
+          iframe.src = target;
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        height: 100%;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        overscroll-behavior-y: none;
+        background-image: url("licet.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      header {
+        width: 100%;
+        background-color: #f2f2f2;
+        padding: 20px 0;
+        text-align: center;
+      }
+      header h2 {
+        margin: 0;
+      }
+      footer {
+        width: 100%;
+        background-color: #d3d3d3;
+        padding: 10px 0;
+        text-align: center;
+        color: #666;
+        margin-top: auto; /* Push footer to the bottom */
+      }
+      #loginForm {
+        width: 400px;
+        margin: 50px auto; /* Increased margin for better centering */
+        background-color: white;
+        padding: 30px; /* Increased padding for a larger box */
+        border-radius: 8px; /* Slightly rounder corners */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Increased shadow */
+      }
+      input,
+      button {
+        width: calc(100% - 22px);
+        margin-bottom: 15px; /* Increased margin between elements */
+        padding: 10px; /* Increased input and button padding */
+        border: 1px solid #ccc;
+        border-radius: 5px; /* Slightly rounder corners */
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+        border: none;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2>Login Page</h2>
+    </header>
+    <form id="loginForm">
+      <input
+        type="text"
+        id="regNo"
+        placeholder="Registration Number"
+        required
+      /><br />
+      <input type="date" id="dob" required /><br />
+      <button type="submit">Login</button>
+    </form>
+    <footer>&copy; 2023 LICET</footer>
+    <script>
+      const users = {
+        LICET123: "2023-11-01",
+        // Add more users if needed
+      };
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const regNo = document.getElementById("regNo").value;
+          const dob = document.getElementById("dob").value;
+
+          if (users[regNo] && users[regNo] === dob) {
+            alert("Login successful!");
+            window.location.href = "buttons.html";
+          } else {
+            alert("Invalid credentials. Please try again.");
+            window.location.href = "index.html";
+          }
+        });
+    </script>
+  </body>
+</html>
